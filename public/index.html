@@ -1,0 +1,71 @@
+<html>
+<body>
+    <script>
+        function readAge(event) {
+
+            event.preventDefault();
+
+            let elemnts = document.querySelector("#age");
+
+            fetch("/database" + element.value)
+            .then((res) => {
+                return res.json();
+             })
+
+             .then((processed) => {
+
+                let employee = document.querySelector("#employee");
+
+                if(processed.error) {
+                    employee.innerHTML = processed.error;
+                }
+
+             })
+        }
+
+
+         function readName(event) {
+             
+            event.preventDefault();
+
+            let element = document.querySelector("#name");
+
+            fetch("/database" + element.value)
+            .then((res) => {
+                return res.json
+            })
+            .then((processed) => {
+                let employee = document.querySelector("#employee");
+
+                if(processed.error) {
+                    employee.innerHTML = processed.error;
+                } else {
+                    employee.innerHTML = processed.age;
+                }
+            });
+        }
+    </script>
+    <h2>Age</h2>
+    <form onsubmit="readAge(event)">
+        <input id="age" type="text">
+        <button>Submit</button>
+    </form>
+    <h2>Name</h2>
+    <form onsubmit="readName(event)">
+        <input id="name" type="text">
+        <button>Submit</button>
+    </form>
+    <hr>
+    <hr>
+    <h2>Employee</h2>
+    <div id="employee"></div>
+
+
+</body>
+
+
+
+
+
+
+</html>
